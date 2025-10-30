@@ -1,30 +1,94 @@
-body {
+:root {
+  --bg: #fff;
+  --ink: #111;
+  --muted: #9aa0a6;
+  --line: #dfe3e7;
+  --tray: #f3f5f7;
+  --rim: #ff3b30; /* iOS-y red */
+}
+
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background: #f0f0f0;
+  background: #eceff3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
 }
 
-.screen {
+/* phone-like canvas wrapper */
+.app {
+  position: relative;
+  width: 360px;  /* base logical size; JS handles HiDPI */
+  height: 640px;
+  background: var(--bg);
+  border-radius: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.2), inset 0 0 0 1px rgba(0,0,0,.06);
+  overflow: hidden;
+}
+
+/* iOS-style top area */
+.topbar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 44px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  padding: 0 12px;
+  color: #3b82f6;
+  font-size: 15px;
+}
+.topbar .back {
+  border: 0;
+  background: transparent;
+  color: #3b82f6;
+  font-size: 16px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: default;
+}
+.topbar .spacer { flex: 1; }
+.hiscore { color: #8791a0; font-size: 14px; }
+
+#game {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* needed for custom swipe */
 }
 
-.hidden {
-  display: none;
+/* big center score */
+.centerHud {
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  user-select: none;
+  pointer-events: none;
+}
+.centerHud .label {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.centerHud .big {
+  font-size: 72px;
+  font-weight: 400;
+  color: #2a6df3;
+  line-height: 1;
 }
 
-canvas {
-  background: #87CEEB; /* sky blue */
-  border: 2px solid #000;
-  display: block;
-  margin: 20px auto;
-}
-
-#hud {
-  font-size: 20px;
-  margin-top: 10px;
+/* bottom tray behind ball */
+.tray {
+  position: absolute;
+  left: 10px; right: 10px;
+  bottom: 24px;
+  height: 90px;
+  background: var(--tray);
+  border: 1px solid var(--line);
+  border-radius: 12px;
 }

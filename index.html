@@ -3,42 +3,28 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>Untitled</title>
+    <title>Basketball</title>
     <link rel="stylesheet" href="./style.css">
 
   </head>
     
   <body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jump Runner</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="main-menu" class="screen">
-    <h1>Jump Runner</h1>
-    <button id="start-btn">Start Game</button>
+  <div class="app">
+  <div class="topbar">
+    <button class="back">‹ Back</button>
+    <div class="spacer"></div>
+    <div class="hiscore">High Score <span id="hiVal">0</span> 🏀</div>
   </div>
 
-  <div id="game-screen" class="screen hidden">
-    <canvas id="gameCanvas" width="600" height="400"></canvas>
-    <div id="hud">
-      <span>Score: <span id="score">0</span></span>
-    </div>
+  <canvas id="game" width="360" height="640" aria-label="Basketball game"></canvas>
+
+  <div class="centerHud">
+    <div class="label">Current Best</div>
+    <div id="bestVal" class="big">0</div>
   </div>
 
-  <div id="game-over" class="screen hidden">
-    <h1>Game Over</h1>
-    <p>Your Score: <span id="final-score">0</span></p>
-    <button id="restart-btn">Restart</button>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  <div class="tray"></div>
+</div>
     <script  src="./script.js"></script>
 
   </body>
